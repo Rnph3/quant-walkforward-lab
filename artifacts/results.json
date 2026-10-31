@@ -1,0 +1,124 @@
+{
+  "data_series": "AAPL",
+  "first_observation": "2018-01-01",
+  "last_observation": "2019-12-30",
+  "n_observations": 105,
+  "source_type": "historical_normalized_weekly_equity_prices",
+  "cost_bps_per_one_way_turnover": 10.0,
+  "periods_per_year": 52,
+  "fold_reset_policy": "flat at every test fold start; folds independently scored",
+  "execution_policy": "signal uses price[t-2]; applied to close-to-close return[t]",
+  "selection_policy": "maximize expanding in-sample net Sharpe; test untouched",
+  "candidate_grid": [
+    {
+      "fast": 3,
+      "slow": 8
+    },
+    {
+      "fast": 4,
+      "slow": 12
+    },
+    {
+      "fast": 6,
+      "slow": 18
+    },
+    {
+      "fast": 8,
+      "slow": 24
+    }
+  ],
+  "folds": [
+    {
+      "fold": 1,
+      "train_end_exclusive": "2018-12-03",
+      "test_start": "2018-12-03",
+      "test_end": "2019-04-01",
+      "selected_fast": 4,
+      "selected_slow": 12,
+      "selected_train_sharpe": 1.004719064002786,
+      "oos_strategy": {
+        "total_return": 0.15482869718291226,
+        "max_drawdown": -0.011773429663522572,
+        "annualized_sharpe": 2.8810771631693495,
+        "positive_period_fraction": 0.2777777777777778,
+        "n_periods": 18
+      },
+      "oos_buy_and_hold": {
+        "total_return": 0.10197782776656883,
+        "max_drawdown": -0.17066382114323686,
+        "annualized_sharpe": 1.0934355948879733,
+        "positive_period_fraction": 0.6666666666666666,
+        "n_periods": 18
+      }
+    },
+    {
+      "fold": 2,
+      "train_end_exclusive": "2019-04-08",
+      "test_start": "2019-04-08",
+      "test_end": "2019-08-05",
+      "selected_fast": 4,
+      "selected_slow": 12,
+      "selected_train_sharpe": 1.5117791038146136,
+      "oos_strategy": {
+        "total_return": -0.052926715857258944,
+        "max_drawdown": -0.17322310743801672,
+        "annualized_sharpe": -0.5119974407815786,
+        "positive_period_fraction": 0.3333333333333333,
+        "n_periods": 18
+      },
+      "oos_buy_and_hold": {
+        "total_return": 0.019243172206456105,
+        "max_drawdown": -0.17322310743801672,
+        "annualized_sharpe": 0.3333595347619432,
+        "positive_period_fraction": 0.5,
+        "n_periods": 18
+      }
+    },
+    {
+      "fold": 3,
+      "train_end_exclusive": "2019-08-12",
+      "test_start": "2019-08-12",
+      "test_end": "2019-12-09",
+      "selected_fast": 4,
+      "selected_slow": 12,
+      "selected_train_sharpe": 0.864931066891168,
+      "oos_strategy": {
+        "total_return": 0.36764107137564395,
+        "max_drawdown": -0.01869249878934609,
+        "annualized_sharpe": 7.007713282227405,
+        "positive_period_fraction": 0.8333333333333334,
+        "n_periods": 18
+      },
+      "oos_buy_and_hold": {
+        "total_return": 0.36764107137564395,
+        "max_drawdown": -0.01869249878934609,
+        "annualized_sharpe": 7.007713282227405,
+        "positive_period_fraction": 0.8333333333333334,
+        "n_periods": 18
+      }
+    }
+  ],
+  "oos_strategy": {
+    "total_return": 0.49579916969400695,
+    "max_drawdown": -0.1732231074380165,
+    "annualized_sharpe": 2.1400129630961575,
+    "positive_period_fraction": 0.48148148148148145,
+    "n_periods": 54
+  },
+  "oos_buy_and_hold": {
+    "total_return": 0.5361117168992406,
+    "max_drawdown": -0.1732231074380166,
+    "annualized_sharpe": 1.840908787608906,
+    "positive_period_fraction": 0.6666666666666666,
+    "n_periods": 54
+  },
+  "oos_total_turnover": 5.0,
+  "oos_exposure_fraction": 0.7222222222222222,
+  "limitations": [
+    "Sample data covers 2018-2019 weekly, normalized equity prices, not BTC futures",
+    "Point-in-time OHLCV, corporate actions, bid-ask spread and volume not modeled",
+    "Historical example and small grid, not a tradable or statistically validated alpha",
+    "Sharpe ignores risk-free rate; cost is simplified one-way turnover approximation",
+    "Each OOS fold starts flat and benchmark also pays an entry cost per fold"
+  ]
+}
